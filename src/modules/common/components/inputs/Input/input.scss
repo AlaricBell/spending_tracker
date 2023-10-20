@@ -1,0 +1,24 @@
+@import "../inputGroup.scss";
+
+.input {
+	&-text {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: $text-size-paragraph-1;
+		color: $color-text-100;
+		background-color: $color-white;
+		border-radius: 8px;
+		width: 100%;
+		height: 36px;
+		border: 1px solid $color-grey;
+		padding: 0 12px;
+		margin: 8px 0;
+		box-shadow: $box-shadow-regular;
+
+		&::placeholder {
+			color: $color-text-48;
+			font-weight: $text-weight-strong;
+		}
+	}
+}

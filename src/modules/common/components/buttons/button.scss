@@ -1,0 +1,24 @@
+@import "../../styles/utils/variables.scss";
+
+.btn {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 12px;
+	height: 40px;
+	font-size: $text-size-paragraph-1;
+	font-weight: $text-weight-strong;
+
+	&-primary {
+		background-color: $color-green;
+		border-radius: 8px;
+		color: $color-white;
+		box-shadow: $box-shadow-regular;
+	}
+
+	&-secondary {
+		background-color: $color-grey;
+		border-radius: 8px;
+	}
+}

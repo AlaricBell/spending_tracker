@@ -1,0 +1,38 @@
+@import "../../../common/styles/utils/variables.scss";
+
+.tracker {
+	&-item {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 18px;
+		background-color: $color-white;
+		box-shadow: $box-shadow-regular;
+		border-radius: 8px;
+	}
+
+	&-currency {
+		padding: 8px;
+		background-color: $color-blue-light;
+		color: $color-blue;
+		border-radius: 8px;
+		margin-right: 18px;
+	}
+
+	&-actions {
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	&-btn {
+		margin-left: 8px;
+		color: $color-grey-dark;
+		font-weight: $text-weight-strong;
+	}
+
+	&-date {
+		color: $color-grey-dark;
+	}
+}

@@ -1,0 +1,71 @@
+@import "./utils/variables";
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
+	min-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: $color-grey;
+	color: $color-text-100;
+}
+
+ul,
+ol {
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+
+a {
+	border: none;
+	text-decoration: none;
+}
+
+input,
+select,
+option,
+textarea {
+	border: none;
+	outline: none;
+}
+
+button {
+	border: none;
+	outline: none;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+h2 {
+	font-size: $text-size-header-2;
+	font-weight: $text-weight-strong;
+}
+
+p {
+	font-size: $text-size-paragraph-1;
+	font-weight: $text-weight-regular;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	display: none;
+}
+
+main {
+	padding: 16px;
+	max-width: 720px;
+	margin: 0 auto;
+}
