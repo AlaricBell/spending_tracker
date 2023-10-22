@@ -1,23 +1,15 @@
-import { useMutation, useQuery } from "react-query";
-
-type GetProps = {
-	amount: string;
-	spent_at: string;
-};
-
-type PostProps = {
-	description: string;
-	amount: number | string;
-	currency: string;
-};
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { GetProps, PostProps } from "../types/trackerType";
 
 const headers = {
 	"Content-Type": "application/json",
 };
 
-async function fetchSpending() {
+async function fetchSpending(params: GetProps) {
 	const response = await fetch(
-		`https://shielded-depths-43687-bb049deacd16.herokuapp.com/spendings`
+		`https://shielded-depths-43687-bb049deacd16.herokuapp.com/spendings${
+			Object.keys(params).length ? "?" : ""
+		}${new URLSearchParams(params)}`
 	);
 	if (!response.ok) {
 		throw new Error("Network response error");
@@ -41,15 +33,20 @@ const postSpending = async (data: PostProps) => {
 	return response;
 };
 
-export const useSpending = () => {
+export const useSpending = (params: GetProps = {}) => {
 	const { data, isLoading, isError, refetch } = useQuery(
-		"trackingData",
-		fetchSpending
+		["trackingData", params],
+		() => fetchSpending(params)
 	);
 
 	return { data, isLoading, isError, refetch };
 };
 
 export function usePostSpending() {
-	return useMutation(postSpending);
+	const queryClient = useQueryClient();
+	return useMutation(postSpending, {
+		onSuccess: () => {
+			queryClient.invalidateQueries("trackingData");
+		},
+	});
 }

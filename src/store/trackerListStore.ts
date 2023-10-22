@@ -22,7 +22,7 @@ const defaultTrackerData: TrackerType[] = [
 export const useTrackerListStore = create<TrackerState>()((set) => ({
 	trackerData: defaultTrackerData,
 	trackerFilter: "",
-	trackerSort: "date;desc",
+	trackerSort: "spent_at",
 	setTrackerFilter: (value) => set((state) => ({ trackerFilter: value })),
 	setTrackerSort: (value) => set((state) => ({ trackerSort: value })),
 	setTrackerData: (value) => set((state) => ({ trackerData: value })),

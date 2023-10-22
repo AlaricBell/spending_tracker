@@ -20,19 +20,19 @@ const TrackerActions = ({}: TrackerListProps) => {
 	const sortOptions = useMemo(() => {
 		return [
 			{
-				value: "date;desc",
+				value: "spent_at",
 				displayValue: "Sort by Date descending (default)",
 			},
 			{
-				value: "date;asc",
+				value: "-spent_at",
 				displayValue: "Sort by Date ascending",
 			},
 			{
-				value: "amount;desc",
+				value: "amount",
 				displayValue: "Sort by Amount descending",
 			},
 			{
-				value: "amount;asc",
+				value: "-amount",
 				displayValue: "Sort by Amount ascending",
 			},
 		];

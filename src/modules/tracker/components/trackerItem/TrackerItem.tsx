@@ -9,6 +9,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { TrackerType } from "../../types/trackerType";
 import { Currency } from "../../enums/trackerEnum";
+import { dateConverter } from "@/modules/common/lib/utils/dateConverter";
 
 type TrackerProps = {
 	tracker: TrackerType;
@@ -25,7 +26,7 @@ const TrackerItem = ({ tracker }: TrackerProps) => {
 			</div>
 			<div className='tracker-detail'>
 				<h2 className='tracker-name'>{tracker.description}</h2>
-				<p className='tracker-date'>{tracker.spent_at}</p>
+				<p className='tracker-date'>{dateConverter(tracker.spent_at)}</p>
 			</div>
 			<div className='tracker-actions'>
 				<h2 className='tracker-amount'>{`${

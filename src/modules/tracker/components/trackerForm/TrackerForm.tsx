@@ -13,7 +13,7 @@ import { useToasterStore } from "@/modules/common/store/toasterStore";
 type TrackerFormProps = {};
 
 const TrackerForm = ({}: TrackerFormProps) => {
-	const { mutateAsync } = usePostSpending();
+	const { mutateAsync, isSuccess } = usePostSpending();
 	const { refetch } = useSpending();
 	const trackerForm = useTrackerFormStore((state) => state.trackerForm);
 	const setTrackerForm = useTrackerFormStore((state) => state.setTrackerForm);
@@ -37,7 +37,6 @@ const TrackerForm = ({}: TrackerFormProps) => {
 			setToasterVariant("error");
 			return;
 		}
-
 		if ((trackerForm.amount as number) <= 0) {
 			setIsToasterOpen(true);
 			setToasterContent("Amount is required!");
@@ -49,11 +48,16 @@ const TrackerForm = ({}: TrackerFormProps) => {
 			amount: trackerForm.amount,
 			currency: trackerForm.currency,
 		});
-		console.log(response);
-		refetch();
-		setIsToasterOpen(true);
-		setToasterContent("Spending was saved!");
-		setToasterVariant("success");
+		if (response.ok) {
+			setIsToasterOpen(true);
+			setToasterContent("Spending was saved!");
+			setToasterVariant("success");
+			refetch();
+		} else {
+			setIsToasterOpen(true);
+			setToasterContent("Something went wrong!");
+			setToasterVariant("error");
+		}
 		clearTrackerForm();
 	};
 
@@ -70,7 +74,7 @@ const TrackerForm = ({}: TrackerFormProps) => {
 				value={trackerForm.amount}
 				type='number'
 				placeholder='0'
-				onChange={(value) => setTrackerForm("amount", Number(value))}
+				onChange={(value) => setTrackerForm("amount", value)}
 			/>
 			<Dropdown
 				className='tracker-form-dropdown'

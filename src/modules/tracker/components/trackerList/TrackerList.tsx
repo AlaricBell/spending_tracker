@@ -3,24 +3,28 @@
 import "./trackerList.scss";
 import TrackerItem from "../trackerItem/TrackerItem";
 import { useSpending } from "../../hooks/useSpending";
-import { TrackerType } from "../../types/trackerType";
+import { GetProps, TrackerType } from "../../types/trackerType";
 import { useTrackerListStore } from "@/store/trackerListStore";
+import { useEffect, useState } from "react";
 
 const TrackerList = () => {
 	const trackerFilter = useTrackerListStore((state) => state.trackerFilter);
-	const { data } = useSpending();
+	const trackerSort = useTrackerListStore((state) => state.trackerSort);
+	const params: GetProps = { currency: trackerFilter, order: trackerSort };
+	const { data, refetch } = useSpending(params);
+
+	useEffect(() => {
+		params.currency = trackerFilter;
+		params.order = trackerSort;
+		refetch();
+	}, [trackerFilter, trackerSort]);
 
 	return (
 		<div className='tracker-list'>
 			{data &&
-				data
-					.filter(
-						(spending: TrackerType) =>
-							trackerFilter === "" || spending.currency === trackerFilter
-					)
-					.map((trackerData: TrackerType) => (
-						<TrackerItem tracker={trackerData} key={trackerData.id} />
-					))}
+				data.map((trackerData: TrackerType) => (
+					<TrackerItem tracker={trackerData} key={trackerData.id} />
+				))}
 		</div>
 	);
 };
