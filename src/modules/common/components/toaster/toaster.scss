@@ -1,0 +1,32 @@
+@import "../../styles/utils/variables.scss";
+
+.toaster {
+	position: fixed;
+	z-index: 110;
+	top: 2rem;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 90%;
+	max-width: 420px;
+	color: $color-white;
+	font-weight: $text-weight-strong;
+	font-size: $text-size-paragraph-2;
+	border-radius: 8px;
+	padding: 4px 8px;
+
+	&-icon {
+		margin-left: auto;
+		cursor: pointer;
+	}
+
+	&-error {
+		background-color: $color-red;
+	}
+
+	&-success {
+		background-color: $color-green;
+	}
+}
