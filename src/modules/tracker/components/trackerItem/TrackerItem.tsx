@@ -1,6 +1,5 @@
 "use client";
 
-import classNames from "classnames";
 import "./trackerItem.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollar } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +8,7 @@ import { ButtonTypes, ButtonVariants } from "@/modules/common/enums/buttonEnum";
 import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { TrackerType } from "../../types/trackerType";
-import { Currency } from "../../enums/trackerEnums";
+import { Currency } from "../../enums/trackerEnum";
 
 type TrackerProps = {
 	tracker: TrackerType;
@@ -29,7 +28,9 @@ const TrackerItem = ({ tracker }: TrackerProps) => {
 				<p className='tracker-date'>{tracker.spent_at}</p>
 			</div>
 			<div className='tracker-actions'>
-				<h2 className='tracker-amount'>{`${tracker.currency}${tracker.amount}`}</h2>
+				<h2 className='tracker-amount'>{`${
+					Currency[tracker.currency as keyof typeof Currency]
+				}${tracker.amount}`}</h2>
 				<Button
 					className='tracker-btn'
 					onClick={() => {}}

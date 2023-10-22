@@ -1,12 +1,14 @@
 "use client";
 
+import classNames from "classnames";
 import "./input.scss";
 
 type InputProps = {
 	type?: string;
 	placeholder?: string;
 	label?: string;
-	value: string;
+	className?: string;
+	value: string | number;
 	onChange: (value: string) => void;
 };
 
@@ -16,9 +18,10 @@ const Input = ({
 	placeholder = "",
 	label = "",
 	type = "text",
+	className = "",
 }: InputProps) => {
 	return (
-		<div className='input-group'>
+		<div className={classNames("input-group", className)}>
 			<label className='input-label'>{label}</label>
 			<input
 				className='input-text'

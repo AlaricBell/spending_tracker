@@ -4,9 +4,8 @@
 	&-group {
 		display: flex;
 		flex-direction: column;
-		align-items: start;
+		align-items: flex-start;
 		justify-content: center;
-		margin: 16px 0;
 	}
 	&-label {
 		font-size: $text-size-paragraph-2;

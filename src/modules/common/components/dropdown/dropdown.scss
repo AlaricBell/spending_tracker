@@ -8,12 +8,13 @@
 	background-color: $color-white;
 	border-radius: 8px;
 	height: 36px;
-	width: 100%;
 	padding: 0 12px;
 	cursor: pointer;
 	box-shadow: $box-shadow-regular;
 	font-size: $text-size-paragraph-1;
 	font-weight: $text-weight-strong;
+	z-index: 100;
+	flex-grow: 3;
 
 	&-options {
 		position: absolute;

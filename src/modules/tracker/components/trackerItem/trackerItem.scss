@@ -6,6 +6,7 @@
 		align-items: center;
 		justify-content: flex-start;
 		padding: 18px;
+		margin-bottom: 12px;
 		background-color: $color-white;
 		box-shadow: $box-shadow-regular;
 		border-radius: 8px;
@@ -28,7 +29,6 @@
 
 	&-btn {
 		margin-left: 8px;
-		color: $color-grey-dark;
 		font-weight: $text-weight-strong;
 	}
 

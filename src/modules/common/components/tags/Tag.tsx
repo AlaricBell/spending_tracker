@@ -3,10 +3,12 @@
 import classNames from "classnames";
 import "./tag.scss";
 import { TagTypes } from "../../enums/tagEnum";
+import { useState } from "react";
 
 type TagProps = {
 	onClick: () => void;
 	className?: string;
+	isActive?: boolean;
 	text?: string;
 	type?: TagTypes;
 	icon?: React.ReactNode;
@@ -14,6 +16,7 @@ type TagProps = {
 
 const Tag = ({
 	onClick,
+	isActive = false,
 	text = "",
 	type = TagTypes.Text,
 	icon = null,
@@ -22,7 +25,12 @@ const Tag = ({
 	return (
 		<div
 			onClick={onClick}
-			className={classNames(`tag-${type}`, "tag", className)}
+			className={classNames(
+				{ highlight: isActive },
+				`tag-${type}`,
+				"tag",
+				className
+			)}
 		>
 			{type !== TagTypes.Text ? icon : null}
 			{type !== TagTypes.Icon ? text : null}

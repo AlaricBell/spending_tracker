@@ -1,0 +1,19 @@
+.tracker-form {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+
+	&-input {
+		margin-right: 8px;
+
+		&:first-of-type {
+			width: 70%;
+		}
+	}
+
+	&-dropdown {
+		margin-right: 8px;
+		min-width: 75px;
+	}
+}

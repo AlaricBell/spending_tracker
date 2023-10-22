@@ -1,8 +1,9 @@
-import { Currency } from "../enums/trackerEnums";
+import { Currency } from "../enums/trackerEnum";
 
 export type TrackerType = {
+	id?: string;
 	description: string;
-	amount: number;
+	amount: number | string;
 	spent_at: string;
-	currency: Currency;
+	currency: string;
 };

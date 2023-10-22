@@ -1,0 +1,21 @@
+.tracker-action {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 3.5rem;
+
+	&-filter {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		margin-left: auto;
+	}
+
+	&-sort {
+		max-width: 45%;
+	}
+
+	&-tag {
+		margin-left: 16px;
+	}
+}
