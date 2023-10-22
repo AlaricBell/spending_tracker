@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { GetProps, PostProps } from "../types/trackerType";
+import { useToasterStore } from "@/modules/common/store/toasterStore";
 
 const headers = {
 	"Content-Type": "application/json",
@@ -44,9 +45,18 @@ export const useSpending = (params: GetProps = {}) => {
 
 export function usePostSpending() {
 	const queryClient = useQueryClient();
+	const setIsToasterOpen = useToasterStore((state) => state.setIsOpen);
+	const setToasterContent = useToasterStore((state) => state.setContent);
+	const setToasterVariant = useToasterStore((state) => state.setVariant);
+
 	return useMutation(postSpending, {
 		onSuccess: () => {
 			queryClient.invalidateQueries("trackingData");
+		},
+		onError: () => {
+			setIsToasterOpen(true);
+			setToasterContent("Something went wrong!");
+			setToasterVariant("error");
 		},
 	});
 }

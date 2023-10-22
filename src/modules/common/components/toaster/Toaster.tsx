@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useToasterStore } from "../../store/toasterStore";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 type ToasterProps = {
 	className?: string;
@@ -27,8 +28,25 @@ const Toaster = ({ className }: ToasterProps) => {
 		}
 	}, [isOpen]);
 
+	const fadeInVariants = {
+		initial: {
+			opacity: 0,
+		},
+		animate: {
+			opacity: 1,
+			transition: {
+				duration: 0.5,
+			},
+		},
+	};
+
 	return isOpen ? (
-		<div className={classNames(`toaster-${variant}`, "toaster", className)}>
+		<motion.div
+			className={classNames(`toaster-${variant}`, "toaster", className)}
+			initial='initial'
+			animate='animate'
+			variants={fadeInVariants}
+		>
 			<div className='toaster-text'>{toasterContent}</div>
 			<span className='toaster-icon' onClick={() => setIsOpen(false)}>
 				<FontAwesomeIcon
@@ -36,7 +54,7 @@ const Toaster = ({ className }: ToasterProps) => {
 					style={{ width: "24px", height: "24px" }}
 				/>
 			</span>
-		</div>
+		</motion.div>
 	) : null;
 };
 
