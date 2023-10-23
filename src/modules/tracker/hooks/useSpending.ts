@@ -52,6 +52,9 @@ export function usePostSpending() {
 	return useMutation(postSpending, {
 		onSuccess: () => {
 			queryClient.invalidateQueries("trackingData");
+			setIsToasterOpen(true);
+			setToasterContent("Spending was saved!");
+			setToasterVariant("success");
 		},
 		onError: () => {
 			setIsToasterOpen(true);

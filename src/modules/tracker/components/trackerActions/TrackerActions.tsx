@@ -3,7 +3,7 @@
 import "./trackerActions.scss";
 import { useCallback, useMemo, useState } from "react";
 import Dropdown from "@/modules/common/components/dropdown/Dropdown";
-import { useTrackerListStore } from "@/store/trackerListStore";
+import { useTrackerListStore } from "@/modules/tracker/store/trackerListStore";
 import Tag from "@/modules/common/components/tags/Tag";
 import { Currency } from "../../enums/trackerEnum";
 

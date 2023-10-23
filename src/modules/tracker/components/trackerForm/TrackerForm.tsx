@@ -6,7 +6,7 @@ import Input from "@/modules/common/components/inputs/Input/Input";
 import Dropdown from "@/modules/common/components/dropdown/Dropdown";
 import { Currency } from "../../enums/trackerEnum";
 import Button from "@/modules/common/components/buttons/Button";
-import { useTrackerFormStore } from "@/store/trackerFormStore";
+import { useTrackerFormStore } from "@/modules/tracker/store/trackerFormStore";
 import { usePostSpending, useSpending } from "../../hooks/useSpending";
 import { useToasterStore } from "@/modules/common/store/toasterStore";
 
@@ -14,7 +14,6 @@ type TrackerFormProps = {};
 
 const TrackerForm = ({}: TrackerFormProps) => {
 	const { mutateAsync, isSuccess } = usePostSpending();
-	const { refetch } = useSpending();
 	const trackerForm = useTrackerFormStore((state) => state.trackerForm);
 	const setTrackerForm = useTrackerFormStore((state) => state.setTrackerForm);
 	const clearTrackerForm = useTrackerFormStore(
@@ -43,21 +42,11 @@ const TrackerForm = ({}: TrackerFormProps) => {
 			setToasterVariant("error");
 			return;
 		}
-		const response = await mutateAsync({
+		await mutateAsync({
 			description: trackerForm.description,
 			amount: trackerForm.amount,
 			currency: trackerForm.currency,
 		});
-		if (response.ok) {
-			setIsToasterOpen(true);
-			setToasterContent("Spending was saved!");
-			setToasterVariant("success");
-			refetch();
-		} else {
-			setIsToasterOpen(true);
-			setToasterContent("Something went wrong!");
-			setToasterVariant("error");
-		}
 		clearTrackerForm();
 	};
 

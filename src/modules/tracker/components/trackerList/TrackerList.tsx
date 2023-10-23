@@ -4,7 +4,7 @@ import "./trackerList.scss";
 import TrackerItem from "../trackerItem/TrackerItem";
 import { useSpending } from "../../hooks/useSpending";
 import { GetProps, TrackerType } from "../../types/trackerType";
-import { useTrackerListStore } from "@/store/trackerListStore";
+import { useTrackerListStore } from "@/modules/tracker/store/trackerListStore";
 import { useEffect, useState } from "react";
 
 const TrackerList = () => {
